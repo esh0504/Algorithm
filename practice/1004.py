@@ -16,17 +16,16 @@ for i in range(TestCase):#반복횟수
         r.append(c)
 
     for t in range(number_planet):
-        if ((x[t]-x1)**2)+(y[t]-y1)**2 >= ((x[t]-x2)**2)+((y[t]-y2)**2):# 출발,목적지와 행성과의 거리 비교
-            if r[t]**2 > ((x[t]-x2)**2)+((y[t]-y2)**2) and ((x2-x1)**2)+((y2-y1)**2) >= r[t]**2: #출발,목적지의 거리와 행성계의 반지름 비교
+        if (x[t]-x1)**2+(y[t]-y1)**2>(x[t]-x2)**2+(y[t]-y2)**2:
+            d2=(x[t] - x1) ** 2 + (y[t] - y1) ** 2
+            d1=(x[t]-x2)**2+(y[t]-y2)**2
+            if d1<r[t]**2 and d2>r[t]**2:
                 count+=1
-            else:
-                continue
-        else:
-            if r[t]**2 > ((x[t]-x1)**2)+((y[t]-y1)**2)  and ((x2-x1)**2)+((y2-y1)**2) >= r[t]**2:
+
+        elif (x[t]-x1)**2+(y[t]-y1)**2<(x[t]-x2)**2+(y[t]-y2)**2:
+            d1=(x[t]-x1)**2+(y[t]-y1)**2
+            d2=(x[t]-x2)**2+(y[t]-y2)**2
+            if d1<r[t]**2 and d2>r[t]**2:
                 count+=1
 
     print(count)
-
-
-
-
