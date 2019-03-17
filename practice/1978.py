@@ -25,4 +25,4 @@ for k in range(num):
             count+=1
             break
 print(count)
-## 틀렸습니다.
+

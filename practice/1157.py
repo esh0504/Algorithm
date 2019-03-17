@@ -1,18 +1,27 @@
 word=input()
-wordList=[]
-
-wordList.sort()
-if word[0]!=word[1]:
-			wordDic={word[0]:1}
-			wordList.append(wordDic)
-count=1
-for i in range(1,len(word)):
-	
-	if word[i-1]!=word[i]:
-		wordDic={word[i]:count}
-		wordList.append(wordDic)
-		count=1
-	else:
-		count+=1
-		
-print(wordList)
+wordOrd=[]
+for i in range(len(word)):
+    if ord(word[i])>=97:
+        wordOrd.append(ord(word[i])-32)
+    else:
+        wordOrd.append(ord(word[i]))
+wordOrd.sort()
+count=0
+count2=0
+answer=word[0]
+print(wordOrd)
+for i in range(len(word)-1):
+    count2+=1
+    if wordOrd[i]==wordOrd[i+1]:
+        count2+=1
+    else:
+        if count>count2:
+            count2=0
+        elif count==count2:
+            count2=0
+            answer='?'
+        else:
+            count=count2
+            count2=0
+            answer=word[i]
+print(answer)
