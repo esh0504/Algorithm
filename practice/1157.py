@@ -10,7 +10,8 @@ count=0
 count2=0
 answer=word[0]
 print(wordOrd)
-for i in range(len(word)-1):
+wordOrd.append(10000)
+for i in range(len(word)):
     count2+=1
     if wordOrd[i]==wordOrd[i+1]:
         count2+=1
