@@ -17,11 +17,12 @@ for i in range(len(word)-1):
     else:
         if count>count2:
             count2=0
+            answer=chr(wordOrd[i])
         elif count==count2:
             count2=0
             answer='?'
         else:
             count=count2
             count2=0
-            answer=word[i]
+            answer=chr(wordOrd[i])
 print(answer)
