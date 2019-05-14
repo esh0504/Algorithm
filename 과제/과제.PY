@@ -1,7 +1,7 @@
 # https://www.ploggingdev.com/2016/11/n-queens-solver-in-python-3/
 
 import copy
-
+import queue
 
 def take_input(): # 입력을 받는 함수
     """Accepts the size of the chess board"""
@@ -69,29 +69,67 @@ def solve(board, col, size): #
     for i in range(size):
         if is_safe(board, i, col, size): #퀸을 놓을수 있는자리일때 퀸을 놓는다.
             board[i][col] = 1
-            if col == size - 1: 마지막 행에 퀸을 놓았
-                add_solution(board)
+            if col == size - 1: #모든 퀸을 다 놓으면 함수를 끝낸다.
+                add_solution(board) #함수를 끝내기전에 답을 출력하는 함수에 저장을 해준다.
                 board[i][col] = 0
                 return
-            solve(board, col + 1, size)
+            solve(board, col + 1, size) #재귀를 이용해 다음 행에 퀸을 놓을 방법을 찾는다.
             # backtrack
             board[i][col] = 0
 
 
-def add_solution(board):
+def add_solution(board): #답을 추가해주는 함수, 추가한답을 출력해야함
     """Saves the board state to the global variable 'solutions'"""
     global solutions
     saved_board = copy.deepcopy(board)
     solutions.append(saved_board)
 
 
-size = take_input()
+def bfs_solve(size):
+    q=queue.Queue()  ##queue 객체를 생성 합니다.
+    for i in range(size): ## 처음에 size만큼 queue 객체에 삽입합니다.
+        a=[]
+        a.append(i)
+        q.put(a)
+    while(q.empty()==False): ## queue 객체가 빌때까지 반복합니다.
+        original_get=q.get()  ## get 메소드를 사용해서 queue객체에서 제일 먼저 들어간 값을 가져옵니다.
+        if len(original_get)==size: ## 받아온 값으로 퀸을 전부 배열할 수 있으면, 그에 맞는 체스판을 만들고 add_solution 메소드로 정답을 추가합니다.
+            board=get_board(size)
+            for i in range(size):
+                board[original_get[i]][i]=1
+            add_solution(board)
+            continue
 
-board = get_board(size)
+        ##받아온 값으로 체스판을 다 만들지 못했을떄 체스판을 완성하기 위한 코드
+
+        copy_get=copy.deepcopy(original_get) # 받아온 값을 여러번 이용하기위해 deepcopy메소드를 사용하여 copy합니다. *주의* 그냥 "="으로 복사하면 값이 변할떄마다 따라서 변함
+        board=get_board(size)
+        for i in range(len(copy_get)):##받아온 값으로 체스판을 만듧니다.
+            board[copy_get[i]][i]=1
+        for i in range(size):
+            if is_safe(board,i,len(copy_get),size): ## 체스판을 만들수 있다면, 
+                original_get=copy.deepcopy(copy_get) ## 아까 복사해둔 값으로 재복사해서 
+                original_get.append(i) ##그 값에 체스판을 조금더 완성시킨후 
+                q.put(original_get)## queue 객체에 push합니다.
+               
+    return 
+
+
+
+
+
+        
+    
+
+                
+
+
+
+size = take_input()
 
 solutions = []
 
-solve(board, 0, size)
+bfs_solve(size)
 
 print_solutions(solutions, size)
 
