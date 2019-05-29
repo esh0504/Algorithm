@@ -96,7 +96,7 @@ plt.grid()
 
 
 ############  Sinusoids (정현파)의 진폭 (Amplitude) 바꾸기
-Fs = 150.0 # sampling rate
+Fs = 150.0 # sampling rate//진폭을
 Ts = 1.0/Fs # sampling interval
 t = np.arange(0,1,Ts) # time vector
 ff = 5
@@ -155,7 +155,7 @@ ff = 5
 # frequency of the signal
 y = np.sin(2*np.pi*ff*t)
 theta=np.pi/2
-y4 = np.sin(2*np.pi*ff*t+theta)
+y4 = np.sin(2*np.pi*ff*t+theta)##왼쪽으로 90도만큼 평행이동한거(+theta)
 ###########
 plt.figure(103)
 plt.subplot(2,1,1)
@@ -205,7 +205,7 @@ Ts = 1.0/Fs # sampling interval
 t = np.arange(0, 1, Ts)
 # time vector
 ff1 = 1 # frequency of the signal
-sqwave=0
+sqwave=0 ##사각형파 "sqware wave"
 c1=1
 plt.figure(201)
 
@@ -214,7 +214,7 @@ for loop in np.arange(1, 10, 1):
     # fourier series
     plt.plot(t, sqwave)
     c1=c1+2
-    plt.pause(3)
+    plt.pause(3)##3초후에 다음꺼 보여주기위해 그리고 3초간 멈춤
 
 
 #################################
