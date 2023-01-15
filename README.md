@@ -16,10 +16,7 @@
         </td>
         <td>
             <img src="https://via.placeholder.com/12/F34B7D/000000?text=+" height="12">
-            <a href="src/1/1001.cpp">C++</a>
-        	<br>
-            <img src="https://via.placeholder.com/12/E3F171/000000?text=+" height="12">
-            <a href="src/1/1001.pas">Pascal</a>
+            <a href="BOJ/bronze/5/1000.py">Python</a>
         </td>
 </tr>
 </table>
