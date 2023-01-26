@@ -1,7 +1,5 @@
-2
-2 4
-GOOD
-LUCK
-2 4
-OKOK
-OKOK
+4
+aabbbaa
+ab
+aaab
+abcdefghij
