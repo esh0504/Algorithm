@@ -1,5 +1,1 @@
-4
-aabbbaa
-ab
-aaab
-abcdefghij
+5 3 18 10 46
